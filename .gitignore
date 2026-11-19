@@ -7,3 +7,4 @@ out/*.log
 out/.master.wav
 out/*.mp4
 keyframes/plate/
+STATE.md
