@@ -1,0 +1,9 @@
+.cache/
+__pycache__/
+*.pyc
+out/frames/
+out/*.wav
+out/*.log
+out/.master.wav
+out/*.mp4
+keyframes/plate/

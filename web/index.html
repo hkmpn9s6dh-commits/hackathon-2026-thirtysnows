@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Thirty Years — a spec film for Nongfu Spring · Changbai Snow</title>
+<meta name="description" content="A 30-second speculative commercial. One snowflake falls through thirty years of volcanic basalt. AARON Awards 2027, Best Speculative Ad." />
+<style>
+  @font-face{
+    font-family:"NotoSerifSC";
+    src:url("assets/noto-serif-subset.woff2") format("woff2");
+    font-weight:200 900;font-display:swap;
+  }
+  :root{
+    --paper:#f6f5f2; --ink:#14181c; --muted:#6b7680; --rule:#dcd8d2;
+    --accent:#1f5c96; --warm:#a14a20;
+    --sans:"Inter","Segoe UI",-apple-system,BlinkMacSystemFont,"Helvetica Neue",Arial,sans-serif;
+    --serif:"NotoSerifSC","Songti SC",Georgia,serif;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+       font-weight:300;line-height:1.65;-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px}
+  nav{position:sticky;top:0;z-index:10;background:rgba(246,245,242,.86);
+      backdrop-filter:saturate(140%) blur(10px);border-bottom:1px solid var(--rule)}
+  nav .wrap{display:flex;justify-content:space-between;align-items:baseline;padding:16px 32px}
+  nav b{font-weight:500;letter-spacing:.02em}
+  nav a{color:var(--muted);text-decoration:none;font-size:13px;letter-spacing:.12em;text-transform:uppercase;margin-left:22px}
+  nav a:hover{color:var(--ink)}
+  header{padding:62px 0 30px}
+  .eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin:0 0 18px}
+  h1{font-family:var(--serif);font-weight:300;font-size:clamp(38px,5.4vw,66px);line-height:1.04;
+     margin:0 0 8px;letter-spacing:.01em}
+  h1 small{display:block;font-size:clamp(15px,1.6vw,20px);letter-spacing:.16em;color:var(--muted);
+           margin-top:18px;font-family:var(--sans);font-weight:300}
+  .lede{font-size:clamp(16px,1.5vw,18px);max-width:60ch;color:#2b3237;margin:18px 0 0}
+  .meta{display:flex;flex-wrap:wrap;gap:26px;margin:24px 0 30px;padding-top:18px;border-top:1px solid var(--rule);
+        font-size:13px;color:var(--muted)}
+  .meta div span{display:block;font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:#9aa3ab;margin-bottom:4px}
+  figure{margin:0}
+  .film{margin:0 0 8px;background:#0b0e11;border-radius:2px;overflow:hidden;line-height:0;max-width:1040px}
+  video{width:100%;height:auto;display:block}
+  figcaption{font-size:12.5px;color:var(--muted);margin-top:10px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
+  section{padding:78px 0;border-top:1px solid var(--rule)}
+  h2{font-family:var(--serif);font-weight:300;font-size:clamp(26px,3vw,38px);margin:0 0 10px}
+  .kicker{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:0 0 14px}
+  .quote{font-family:var(--serif);font-size:clamp(26px,4vw,52px);line-height:1.25;margin:0 0 12px;font-weight:300}
+  .quote-en{font-size:clamp(15px,1.5vw,19px);color:var(--muted);letter-spacing:.02em;margin:0 0 30px}
+  .two{display:grid;grid-template-columns:1.15fr .85fr;gap:56px;align-items:start}
+  .two p{margin:0 0 18px;font-size:16.5px;color:#2f363c}
+  .note{font-size:14px;color:var(--muted);border-left:2px solid var(--accent);padding-left:16px}
+  .stills{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:34px 0 0}
+  .stills img{width:100%;height:auto;display:block;background:#0b0e11}
+  .stills figcaption{margin-top:8px;font-size:12px;color:var(--muted)}
+  .flow{margin:40px 0 0;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+        background:#fff;padding:26px 0}
+  .flow img{width:100%;max-width:1600px;display:block;margin:0 auto}
+  .flow .hint{max-width:1120px;margin:10px auto 0;padding:0 32px;font-size:12.5px;color:var(--muted)}
+  @media (min-width:1200px){
+    .flow{width:100vw;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw)}
+  }
+  ul.build{list-style:none;padding:0;margin:26px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:18px 40px}
+  ul.build li{font-size:15.5px;color:#2f363c;padding-left:16px;position:relative}
+  ul.build li::before{content:"";position:absolute;left:0;top:.62em;width:5px;height:5px;background:var(--accent)}
+  ul.build b{font-weight:500}
+  .numbers{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin-top:34px}
+  .numbers div{background:var(--paper);padding:24px 20px}
+  .numbers strong{display:block;font-family:var(--serif);font-size:clamp(24px,2.6vw,34px);font-weight:300;line-height:1.1}
+  .numbers span{font-size:12px;color:var(--muted);letter-spacing:.04em}
+  table.cred{width:100%;border-collapse:collapse;margin-top:26px;font-size:14.5px}
+  table.cred td{padding:11px 0;border-bottom:1px solid var(--rule);vertical-align:top;color:#2f363c}
+  table.cred td:first-child{width:38%;color:var(--muted)}
+  .disclosure{margin-top:34px;font-size:13.5px;color:var(--muted);max-width:78ch}
+  footer{padding:44px 0 70px;border-top:1px solid var(--rule);font-size:12.5px;color:var(--muted)}
+  @media (max-width:860px){
+    .two{grid-template-columns:1fr;gap:28px}
+    ul.build{grid-template-columns:1fr}
+    .numbers{grid-template-columns:repeat(2,1fr)}
+    .stills{grid-template-columns:1fr}
+    header{padding:56px 0 28px}
+    section{padding:56px 0}
+  }
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <b>Thirty Years</b>
+  <div>
+    <a href="#film">Film</a><a href="#idea">Idea</a><a href="#build">Build</a><a href="#credits">Credits</a>
+  </div>
+</div></nav>
+
+<header class="wrap">
+  <p class="eyebrow">AARON Awards 2027 · 08 Best Speculative Ad</p>
+  <h1>Thirty Years<small>三十年前的雪</small></h1>
+  <p class="lede">A 30-second speculative commercial for <b style="font-weight:500">Nongfu Spring · Changbai Snow</b>.
+  One snowflake falls through thirty years of volcanic basalt and comes out as a bottle of water.</p>
+  <div class="meta">
+    <div><span>Brand</span>Nongfu Spring · Changbai Snow</div>
+    <div><span>Length</span>30.00 s · 24 fps · 1920×1080</div>
+    <div><span>Status</span>Spec work · not commissioned</div>
+    <div><span>Made of</span>7 generated stills + code</div>
+  </div>
+</header>
+
+<div class="wrap" id="film">
+  <figure>
+    <div class="film">
+      <video id="player" controls playsinline preload="metadata" poster="assets/poster.jpg">
+        <source src="assets/thirty-years.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <figcaption>
+      <span>Sound on. No music: wind, rock, water, one bell.</span>
+      <span>Subtitled in-frame, Chinese and English.</span>
+    </figcaption>
+  </figure>
+</div>
+
+<section id="idea"><div class="wrap">
+  <p class="kicker">The idea</p>
+  <p class="quote">你喝到的，是三十年前的雪。</p>
+  <p class="quote-en">What you taste is snow from thirty years ago.</p>
+  <div class="two">
+    <div>
+      <p>Changbai Snow comes from a cold spring inside the Changbai Mountains. The water fell as snow,
+      seeped into volcanic basalt, and travelled through the rock for <b>thirty to sixty years</b> before it
+      surfaced at a constant 7&nbsp;°C. That number is on the brand's own product page.</p>
+      <p>It is also a number nobody has ever seen. For eight years the brand's films have stayed outside the
+      mountain — snow, deer, forest, four seasons, mist. Beautiful, and always from the outside.</p>
+      <p>So this film goes in. Eight shots, one direction of travel, two camera moves: a very slow push,
+      and a very slow pull. No people. No voice-over. No music.</p>
+      <p class="note">The product's entire value is a duration. The category's entire visual language is landscape.
+      Show the thirty years, not the mountain.</p>
+    </div>
+    <div>
+      <p style="font-size:15px;color:#4a545c">The brand's real line closes the film, unchanged:</p>
+      <p style="font-family:var(--serif);font-size:clamp(20px,2.2vw,27px);line-height:1.5;margin:0 0 6px">
+        我们不生产水，<br />我们只是大自然的搬运工。</p>
+      <p style="font-size:13.5px;color:var(--muted);margin-top:14px">We don't produce water. We are just the porters of nature.</p>
+    </div>
+  </div>
+
+  <div class="stills">
+    <figure><img src="assets/still-snow.jpg" alt="A snow ridge at blue hour" />
+      <figcaption>01 · outside — the mountain the brand already owns</figcaption></figure>
+    <figure><img src="assets/still-inside.jpg" alt="Inside wet volcanic basalt" />
+      <figcaption>04 · inside — the shot no camera can fly</figcaption></figure>
+    <figure><img src="assets/still-spring.jpg" alt="A bottle at the spring" />
+      <figcaption>07 · out — 7 °C, and a bottle already waiting</figcaption></figure>
+  </div>
+</div></section>
+
+<section id="build"><div class="wrap">
+  <p class="kicker">The build</p>
+  <h2>A 30-second ad has no room for a shot that drifts.</h2>
+  <p class="lede" style="margin-top:14px">So the film is built like software: one source file, five build stages,
+  four gates, and a command that fails the build when the film and its documents disagree.</p>
+
+  <figure class="flow">
+    <a href="assets/workflow.png" target="_blank" rel="noopener"><img src="assets/workflow.png" alt="Build pipeline: seven stills, five stages, four gates" /></a>
+    <p class="hint">Seven generated stills enter; a 30-second master comes out. Every stage has an assertion that can fail the build. <a href="assets/workflow.png" target="_blank" rel="noopener">Open full size ↗</a></p>
+  </figure>
+
+  <ul class="build">
+    <li><b>One source file.</b> Eight shots, camera curves, three supers, the end card and ten sound cues live in
+    <code>film.py</code>. The shot list is generated from it; the build fails if the document drifts.</li>
+    <li><b>Seven stills, not seventy.</b> Motion is procedural: sub-pixel moves with smoothstep easing,
+    a cold grade, 0.75 % grain, 28 % vignette — identical on every rebuild.</li>
+    <li><b>Sound without music.</b> Wind, rock, water and one 110 Hz bell, synthesised from noise and modal
+    partials. Normalised to −14 LUFS, true peak −2.2 dBTP.</li>
+    <li><b>25 assertions before the first frame.</b> Timeline adds to 720 frames; cuts are cuts; every super sits
+    inside a 5 % safe area; the palette stays cold; every glyph exists in the bundled font.</li>
+    <li><b>A fresh clone reproduces it.</b> The verifier re-renders eight frames from the delivered file and requires
+    ≥45 dB PSNR against a from-scratch render.</li>
+    <li><b>Why AI, specifically.</b> The thirty years happen inside rock — no light, no space, no second camera
+    position. Generation made the impossible shot the cheapest shot, not the fastest one.</li>
+  </ul>
+
+  <div class="numbers">
+    <div><strong>30.000 s</strong><span>720 frames, exactly</span></div>
+    <div><strong>25</strong><span>assertions, green in a clean clone</span></div>
+    <div><strong>0</strong><span>external assets · stock · library music</span></div>
+    <div><strong>−14.1</strong><span>LUFS · true peak −2.2 dBTP</span></div>
+  </div>
+</div></section>
+
+<section id="credits"><div class="wrap">
+  <p class="kicker">Credits</p>
+  <h2>Made by one person and a build script.</h2>
+  <table class="cred">
+    <tr><td>Concept, art direction, edit</td><td>Zhang Yi（张一）</td></tr>
+    <tr><td>Keyframes</td><td>Zhang Yi, with a generative image model</td></tr>
+    <tr><td>Motion, grade, compositing, type</td><td><code>render.py</code> — Python, OpenCV, Pillow</td></tr>
+    <tr><td>Sound design and mix</td><td><code>audio.py</code> — NumPy synthesis, FFT convolution reverb</td></tr>
+    <tr><td>Build, tests, reproducibility</td><td><code>film.py</code>, <code>scripts/verify.sh</code></td></tr>
+    <tr><td>Tools</td><td>Generative image model · Python · FFmpeg · Source Han Serif SC</td></tr>
+  </table>
+  <p class="disclosure">
+    <b>Speculative work.</b> Not commissioned by, affiliated with, or endorsed by Nongfu Spring.
+    No media spend, no broadcast. All imagery is AI-generated and composited by code; the end card states
+    「水源地影像为 AI 生成示意」. Product facts — thirty to sixty years of basalt filtration, a 7 °C spring,
+    the closing brand line — are quoted from Nongfu Spring's own product pages and are listed with sources in
+    <code>docs/03-SOURCES.md</code>.
+  </p>
+</div></section>
+
+<footer><div class="wrap">
+  Thirty Years · 三十年前的雪 · AARON Awards 2027 · 08 Best Speculative Ad ·
+  <a href="#film">back to the film</a>
+</div></footer>
+
+<script>
+  // 只做一件事：点播放前把海报换成第一帧，避免黑场。
+  const v = document.getElementById('player');
+  v.addEventListener('play', () => { v.removeAttribute('poster'); }, { once: true });
+</script>
+</body>
+</html>

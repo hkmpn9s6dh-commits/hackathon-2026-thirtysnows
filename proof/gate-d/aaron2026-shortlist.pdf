@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lekton:ital,wght@0,400;0,700;1,400&display=swap"
+    rel="stylesheet">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png">
+  <link rel="manifest" href="/favicon/site.webmanifest">
+
+
+
+  <!-- Primary Meta Tags -->
+  <title>Aaron Awards 2027 – Celebrating AI Creativity</title>
+  <meta name="title" content="Aaron Awards 2027 – Celebrating AI Creativity" />
+  <meta name="description"
+    content="The Aaron Awards recognises world-leading AI-powered creativity. Explore the 2027 categories for creative craft and industry excellence, and enter through the AARON portal." />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://www.aaronawards.com/" />
+
+  <!-- Keywords (optional but helpful for niche searches) -->
+  <meta name="keywords"
+    content="Aaron Awards, AI Awards, Creative AI Awards, AI Narrative, Real-time AI, AI Brand Experience, AI Spec Ad" />
+
+  <!-- Robots -->
+  <meta name="robots" content="index, follow" />
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.aaronawards.com/" />
+  <meta property="og:title" content="Aaron Awards 2027 – Celebrating AI Creativity" />
+  <meta property="og:description"
+    content="Recognising groundbreaking AI-enabled storytelling, real-time brand experiences and bold speculative advertising." />
+  <meta property="og:image" content="/og/aaron-og-image.jpg" />
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://www.aaronawards.com/" />
+  <meta name="twitter:title" content="Aaron Awards 2027 – Celebrating AI Creativity" />
+  <meta name="twitter:description" content="Submit your AI-driven creative work to the Aaron Awards." />
+  <meta name="twitter:image" content="/og/aaron-og-image.jpg" />
+
+
+
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CreativeWorkSeries",
+  "name": "Aaron Awards 2026",
+  "url": "https://www.aaronawards.com/",
+  "description": "Awards celebrating excellence in AI-powered storytelling, real-time brand experiences and speculative creative work.",
+  "creator": {
+    "@type": "Organization",
+    "name": "Aaron Awards",
+    "url": "https://www.aaronawards.com/"
+  }
+}
+</script>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVYNNGM00"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    // Disable automatic page_view if you want manual SPA tracking:
+    // gtag('config', 'G-PYVYNNGM00', { send_page_view: false });
+
+    // Simple: let GA send initial page_view:
+    gtag('config', 'G-PYVYNNGM00');
+  </script>
+
+
+
+  <title>AARON AWARDS</title>
+  <script type="module" crossorigin src="/assets/index-top50-2522ed5db9e3.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-DS9QP64e.css">
+  <link rel="stylesheet" href="/assets/top50-528e799eadca.css">
+  <link rel="stylesheet" href="/assets/site-2027-778ccc120bc3.css">
+  <script>if (location.pathname === "/criteria-2027/" || location.pathname === "/criteria-2027") location.replace("/criteria-2027/index.html" + location.search + location.hash);</script>
+</head>
+
+<body>
+  <div id="root"></div>
+</body>
+
+</html>
