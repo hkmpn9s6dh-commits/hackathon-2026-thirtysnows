@@ -10,5 +10,7 @@ git add -A
 git -c user.name=CB -c user.email=cb@local commit -q -m "site: Thirty Years"
 git branch -M gh-pages
 git remote add origin https://github.com/hkmpn9s6dh-commits/hackathon-2026-thirtysnows.git
-git -c http.proxy=http://127.0.0.1:7897 -c http.version=HTTP/1.1 push -q origin gh-pages
+# gh-pages 是这条脚本的产物分支（只有静态文件），每次整棵替换，所以是 force push；
+# 不要在这个分支上手工改东西。
+git -c http.proxy=http://127.0.0.1:7897 -c http.version=HTTP/1.1 push -q -f origin gh-pages
 echo "pushed gh-pages"

@@ -57,6 +57,9 @@ The film is built like software, because a 30-second ad has no room for a shot t
   Music would have made thirty years feel like thirty seconds.
 - **Typography as the only "graphic".** Source Han Serif, three lines, 34 px, 8 % from the
   left edge, 77.5 % down. The end card holds the brand line and the AI disclosure.
+- **The label is typeset, not generated.** Image models cannot set Chinese reliably, so the
+  pack shot is generated with a blank label and the build sets 「长白雪 / 天然雪山矿泉水」 on it
+  in code — same font file, same grid, same rebuild every time.
 - **25 assertions before a single frame was rendered.** Timeline adds to 30.000 s and 720
   frames; cuts are cuts; every super sits inside a 5 % safe area; the palette stays cold;
   no skin-tone region; every character exists in the bundled font; the same timestamp
@@ -66,7 +69,7 @@ The film is built like software, because a 30-second ad has no room for a shot t
 
 ## Results
 
-- 30.000 s, 1920×1080, 24 fps, H.264 + AAC, −14.1 LUFS, true peak −2.2 dBTP.
+- 30.000 s, 1920×1080, 24 fps, H.264 + AAC, −14.2 LUFS, true peak −2.2 dBTP.
 - 25 assertions green on the build machine and in a clean clone.
 - Blind read by three models from three different families, with the author hidden:
   all three named the product category (bottled water) and the closing line.
