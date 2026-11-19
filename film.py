@@ -58,9 +58,9 @@ SHOTS: list[Shot] = [
          note="水珠沿发丝裂缝下滑，镜头跟进去，光一层层掉。"),
     Shot(4, "k4_inside", "keyframes/raw/k4_inside.png", 4.5, 1.02, 1.20, 0.50, 0.50, 0.30, 0.74,
          fade_in=0.45, note="英雄镜头：岩层内部垂直下坠，湿壁与矿脉。"),
-    Shot(5, "k5_deep", "keyframes/raw/k5_deep.png", 4.0, 1.26, 1.10, 0.50, 0.48, 0.54, 0.50,
+    Shot(5, "k5_deep", "keyframes/raw/k5_deep.png", 3.0, 1.26, 1.10, 0.50, 0.48, 0.54, 0.50,
          fade_in=0.55, note="更深处，近全黑，只有水的边缘发亮；光每几秒脉动一次。"),
-    Shot(6, "k6_spring", "keyframes/raw/k6_spring.png", 3.5, 1.12, 1.00, 0.50, 0.50, 0.56, 0.50,
+    Shot(6, "k6_spring", "keyframes/raw/k6_spring.png", 4.5, 1.12, 1.00, 0.50, 0.50, 0.56, 0.50,
          fade_in=0.50, note="裂缝张开，冷水涌出；镜头随水面抬起，冷雾贴水跑。"),
     Shot(7, "k7_bottle", "keyframes/raw/k7_bottle.png", 3.19, 1.15, 1.00, 0.50, 0.50, 0.52, 0.50,
          note="泉眼边的雪岩上，一支长白雪；缓慢后拉露出原始林。"),
@@ -84,7 +84,7 @@ class Super:
 SUPERS: list[Super] = [
     Super("长白山 · 自涌冷泉", "CHANGBAI MOUNTAINS · A COLD SPRING", 0.80, 3.60),
     Super("玄武岩 · 三十年", "THIRTY YEARS THROUGH VOLCANIC BASALT", 11.40, 15.10),
-    Super("三十年之后，它才涌出来", "AFTER THIRTY YEARS, IT SURFACES", 19.90, 22.70),
+    Super("三十年之后，它才涌出来", "AFTER THIRTY YEARS, IT SURFACES", 18.90, 22.30),
 ]
 
 ENDCARD = {
@@ -98,6 +98,10 @@ ENDCARD = {
     "en": (1.55, "WHAT YOU TASTE IS SNOW FROM THIRTY YEARS AGO"),
 }
 
+# 瓶身标签（归一化，plate 坐标系）。生成的瓶子是空白标签，字由代码排上去。
+LABEL_BOX = (0.464, 0.367, 0.598, 0.758)
+LABEL_TEXT = ("长白雪", "天然雪山矿泉水")
+
 AUDIO_EVENTS = [
     (0.00, "wind", {"gain": 0.55}),
     (0.00, "drone", {"gain": 0.35, "f0": 38.0}),
@@ -105,8 +109,8 @@ AUDIO_EVENTS = [
     (7.90, "slip", {"gain": 0.34}),
     (11.20, "rumble", {"gain": 0.40}),
     (15.50, "pulse", {"gain": 0.30, "period": 2.0, "count": 2}),
-    (19.60, "bell", {"gain": 0.42, "f0": 110.0}),
-    (19.70, "swell", {"gain": 0.42}),
+    (18.62, "bell", {"gain": 0.42, "f0": 110.0}),
+    (18.72, "swell", {"gain": 0.42}),
     (23.10, "fifth", {"gain": 0.30}),
     (26.80, "tail", {"gain": 0.30}),
 ]

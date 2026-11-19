@@ -44,7 +44,10 @@ def prep_plates() -> None:
         w, h = im.size
         cw, ch = int(w * (1 - WATERMARK_CROP)), int(h * (1 - WATERMARK_CROP))
         im = im.crop((0, 0, cw, ch)).resize((film.W, film.H), Image.LANCZOS)
-        im.save(dst)
+        bgr = cv2.cvtColor(np.array(im.convert("RGB")), cv2.COLOR_RGB2BGR)
+        if s.key == "k7_bottle":
+            bgr = add_label(bgr)
+        imwrite_u(dst, bgr)
         print(f"plate {s.key}: {w}x{h} -> {film.W}x{film.H}")
 
 
@@ -62,6 +65,46 @@ def imwrite_u(path: Path, img: np.ndarray) -> None:
     if not ok:
         raise SystemExit(f"写不出图片：{path}")
     buf.tofile(str(path))
+
+
+def add_label(plate_bgr: np.ndarray) -> np.ndarray:
+    """在空白标签上排版：竖排「长白雪」+ 小字副名 + 一条细线。
+
+    生成器画不出可靠的中文，所以字一律由代码排——这也是「单一来源」的一部分：
+    改标签只要改 film.LABEL_TEXT。
+    """
+    x0, y0, x1, y1 = film.LABEL_BOX
+    X0, Y0, X1, Y1 = int(x0 * film.W), int(y0 * film.H), int(x1 * film.W), int(y1 * film.H)
+    img = Image.fromarray(cv2.cvtColor(plate_bgr, cv2.COLOR_BGR2RGB)).convert("RGBA")
+    layer = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    d = ImageDraw.Draw(layer)
+    ink = (38, 44, 50, 232)
+    thin = (70, 78, 86, 150)
+
+    # 细线（标签上缘内侧）
+    d.line([(X0 + 34, Y0 + 46), (X1 - 34, Y0 + 46)], fill=thin, width=2)
+
+    # 竖排主名
+    f_main = font(CN_SERIF, 52)
+    cw = (X1 - X0)
+    cx = X0 + cw * 0.52
+    y = Y0 + 128
+    for ch in film.LABEL_TEXT[0]:
+        d.text((cx, y), ch, font=f_main, fill=ink, anchor="ma")
+        y += 64
+
+    # 副名：竖排小字，靠右
+    f_sub = font(CN_SERIF, 15)
+    y2 = Y0 + 250
+    for ch in film.LABEL_TEXT[1]:
+        d.text((X1 - 46, y2), ch, font=f_sub, fill=(60, 68, 76, 190), anchor="ma")
+        y2 += 19
+
+    # 标签底缘的一条短线
+    d.line([(cx - 22, Y1 - 84), (cx + 22, Y1 - 84)], fill=thin, width=2)
+
+    out = Image.alpha_composite(img, layer).convert("RGB")
+    return cv2.cvtColor(np.array(out), cv2.COLOR_RGB2BGR)
 
 
 def load_plate(key: str) -> np.ndarray:
@@ -206,6 +249,26 @@ def camera_frame(plate: np.ndarray, s: film.Shot, u: float) -> np.ndarray:
     return cv2.resize(crop, (film.W, film.H), interpolation=cv2.INTER_CUBIC)
 
 
+_YROW = np.arange(film.H, dtype=np.float32)[:, None]
+
+
+def light_sweep(img: np.ndarray, shot: "film.Shot", t: float) -> np.ndarray:
+    """一条光带贴着岩壁往下走：让「时间在走」看得见，而不是只写在字幕上。
+
+    只给下坠的三段（S4/S5/S6）。进出为零，不留接缝。
+    """
+    if shot.idx not in (4, 5, 6):
+        return img
+    u = min(1.0, max(0.0, (t - shot.start) / shot.dur))
+    yc = (-0.25 + 1.5 * u) * film.H
+    sigma = 0.20 * film.H
+    band = np.exp(-0.5 * ((_YROW - yc) / sigma) ** 2)
+    amp = (0.22 if shot.idx == 5 else 0.16) * np.sin(np.pi * u)
+    add = band * amp * 255.0
+    out = img.astype(np.float32) + add[..., None] * np.array([1.04, 1.01, 0.97], np.float32)
+    return np.clip(out, 0, 255).astype(np.uint8)
+
+
 def endcard_frame(t: float, with_text: bool = True) -> np.ndarray:
     img = Image.new("RGB", (film.W, film.H), (6, 8, 11))
     if not with_text:
@@ -266,6 +329,7 @@ def render_frame(t: float, with_text: bool = True) -> np.ndarray:
     plate = load_plate(s.key)
     frame = camera_frame(plate, s, u)
     frame = grade(frame, s.idx, film.frame_at(t))
+    frame = light_sweep(frame, s, t)
 
     if s.fade_in > 0 and (t - s.start) < s.fade_in:
         prev = film.SHOTS[s.idx - 2]
